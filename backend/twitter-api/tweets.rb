@@ -6,10 +6,11 @@ require "json"
 require "oauth"
 require "cgi"
 require "./lib.rb"
+require "yaml"
 
 ARGV[0] || abort("ERROR[#{__FILE__}]: NO HANDLE PROVIDED\nUSAGE: ruby #{__FILE__} <handle>")
 handle = ARGV[0]
-$auth = %x(source #{Dir.pwd}/auth.sh; echo $CONSUMER_KEY $CONSUMER_SECRET $API_KEY $API_SECRET).chomp.split
+$auth = YAML.load open("#{Dir.pwd}/auth.yaml", &:read)
 
 tweets = []
 
