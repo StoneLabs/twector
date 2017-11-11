@@ -1,0 +1,1 @@
+echo "$1" | ./fasttext print-word-vectors wiki.en.bin
