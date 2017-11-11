@@ -12,7 +12,7 @@
 	      '                '      )/       '    )/        '   )/         '                '    '        '     '   
 	                              '             '             '                                                   
 # Abstract
-Twictor is a web-application calculating the connection between two Twitter users. An A*-Star algorithm is used to calculate the path between two accounts using a heuristic based on Propinquity. A network graph is utilized to visualize the network between the profiles.
+Twector is a web-application calculating the connection between two Twitter users. An A*-Star algorithm is used to calculate the path between two accounts using a heuristic based on Propinquity. A network graph is utilized to visualize the network between the profiles.
 
 # Installation
 See `INSTALLATION.md` for further information.
