@@ -56,6 +56,7 @@ body * {
     background-color: #007acc;
     color: #fff;
 }
+
 @media (max-width: 600px) {
     #options .input {
         width: calc(100% - 60px);
@@ -74,4 +75,37 @@ body * {
 }
 #options .button .material-icons {
     display: block;
+}
+
+#options.loading #tools,
+#options:not(.loading) #load {
+    display: none;
+}
+#load img {
+    height: 30px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    transition: 0.3s;
+
+    animation-iteration-count: infinite;
+    animation-name: loading;
+    animation-duration: 1s;
+}
+@keyframes loading {
+    0% {
+        margin-top: 8px;
+        height: 30px;
+        opacity: 1;
+    }
+    80% {
+        margin-top: 4px;
+        height: 38px;
+        opacity: 0.7;
+    }
+    100% {
+        margin-top: 8px;
+        height: 30px;
+        opacity: 1;
+    }
 }

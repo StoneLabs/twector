@@ -19,12 +19,14 @@ $(function () {
             val = val.substr(1);
 
         // validate twitter name
-        if (val.match('^[A-Za-z0-9_]{1,32}$') || val.length < 1)
+        if ((val.match('^[A-Za-z0-9_]{1,32}$') || val.length < 1) &&
+            $('#twector-first-name').val() !== $('#twector-second-name'))
             element.closest('.input').removeClass('error');
         else
             element.closest('.input').addClass('error');
 
-        return val.match('^[A-Za-z0-9_]{1,32}$') && val.length > 0;
+        return val.match('^[A-Za-z0-9_]{1,32}$') && val.length > 0 &&
+            $('#twector-first-name').val() !== $('#twector-second-name').val();
     }
     function loadButtonClick() {
         var errors = false;
@@ -43,7 +45,8 @@ $(function () {
     }
     function loadIndex(firstName, secondName) {
         // loads the site context
-        console.log('loaded')
+        console.log('loaded');
+        $('#options').addClass('loading');
     }
 });
 

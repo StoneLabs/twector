@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Twector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
@@ -14,14 +15,19 @@
     <canvas id="canvas"></canvas>
     <div id="options">
 
-        <div class="input" id="twector-first-name">
-            <input pattern="^[A-Za-z0-9_]{1,32}$" max="16" type="text" placeholder="Twitter Benutzername">
+        <div id="load">
+            <img src="favicon.png">
         </div>
-        <div class="input" id="twector-second-name">
-            <input pattern="^[A-Za-z0-9_]{1,32}$" max="16" type="text" placeholder="Zweiter Twitter Benutzername">
-        </div>
-        <div class="button" id="submit-button">
-            <i class="material-icons">search</i>
+        <div id="tools">
+            <div class="input" id="twector-first-name">
+                <input pattern="^[A-Za-z0-9_]{1,32}$" max="16" type="text" placeholder="Twitter Benutzername">
+            </div>
+            <div class="input" id="twector-second-name">
+                <input pattern="^[A-Za-z0-9_]{1,32}$" max="16" type="text" placeholder="Zweiter Twitter Benutzername">
+            </div>
+            <div class="button" id="submit-button">
+                <i class="material-icons">search</i>
+            </div>
         </div>
 
     </div>
