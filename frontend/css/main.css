@@ -5,27 +5,16 @@ body {
 body * {
     outline: none;
 }
-#canvas {
-    background-color: #f1f1f1;
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-}
 #options {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    display: block;
     padding: 10px 25px;
 }
 #options .input {
     display: inline-block;
-    width: calc(50% - 60px);
+    width: calc(50% - 2px);
+}
+#options .input:nth-child(2) input {
+    width: calc(100% - 100px);
 }
 #options .input input {
     display: inline-block;
@@ -33,9 +22,9 @@ body * {
     border: 1px solid #fff;
     padding: 9px 19px;
     font-size: 14px;
-    margin: 0 5px;
+    align-self: center;
     color: #666;
-    width: calc(100% - 40px);
+    width: calc(100% - 44px);
 }
 #options .input.error input {
     box-shadow: 0 2px 2px 0 rgba(255,0,0,.14), 0 3px 1px -2px rgba(255,0,0,.2), 0 1px 5px 0 rgba(255,0,0,.12);
@@ -52,22 +41,16 @@ body * {
     padding: 6px 15px;
     position: relative;
     top: 7px;
-    margin: 0 5px;
     background-color: #007acc;
     color: #fff;
 }
 
 @media (max-width: 600px) {
     #options .input {
-        width: calc(100% - 60px);
-        margin-bottom: 5px;
+        width: calc(100% - 10px);
     }
-    #options .button {
-        float: right;
-        margin-right: 55px;
-    }
-    #canvas {
-        top: 110px;
+    #options .input:nth-child(2) input {
+        width: calc(100% - 102px);
     }
 }
 #options .button:hover, #options .button .material-icons:hover {
@@ -108,4 +91,73 @@ body * {
         height: 30px;
         opacity: 1;
     }
+}
+
+#information {
+    display: block;
+}
+#information .container {
+    display: table;
+    margin: 0 auto;
+}
+#information .info {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    padding: 30px 0;
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: 250px;
+}
+#information .info img {
+    border-radius: 50%;
+    width: calc(100% - 60px);
+    padding: 0 30px;
+    display: block;
+}
+#information .info .content {
+    padding-top: 20px;
+}
+#information .info .text {
+    padding: 4px 30px 6px 30px;
+}
+#information .info .text:hover {
+    background-color: #f1f1f1;
+}
+#information .info .text .material-icons {
+    display: block;
+    float: left;
+}
+#information .info .text span {
+    padding: 4px 10px;
+    position: relative;
+    top: 2px;
+}
+#information .info .description {
+    font-size: 12px;
+    padding: 8px 30px 16px 30px;
+}
+#percentage {
+    margin: 80px auto 10px auto;
+    font-size: 22px;
+    font-weight: 800;
+    width: calc(100% - 40px);
+    max-width: 470px;
+    padding: 5px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+#percentage div {
+    text-align: center;
+    margin: 0 auto;
+}
+#percentage .material-icons {
+    color: #aa0000;
+}
+#percentage .material-icons:first-of-type {
+    float: left;
+}
+#percentage .material-icons:last-of-type {
+    float: right;
 }
