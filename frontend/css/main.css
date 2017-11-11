@@ -59,6 +59,9 @@ body * {
 #options .button .material-icons {
     display: block;
 }
+#options .details {
+    font-size: 12px;
+}
 
 #options.loading #tools,
 #options:not(.loading) #load {
