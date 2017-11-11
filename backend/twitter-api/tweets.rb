@@ -25,4 +25,4 @@ last_id = 0
 	last_id = res.map{|i|i["id"]}.max
 end
 
-$stdout.puts tweets.map{|i|i["text"].split.join(" ")}
+$stdout.puts tweets.map{|i|i["text"].split.join(" ").match(/^(RT @[a-zA-Z0-9_]+:\s*)*(.+)$/)[2]}
