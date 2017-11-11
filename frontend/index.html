@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twector</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <canvas id="canvas"></canvas>
+    <div id="options">
+
+        <div class="input" id="twector-first-name">
+            <input pattern="^[A-Za-z0-9_]{1,32}$" type="text" placeholder="Twitter Benutzername">
+        </div>
+        <div class="input" id="twector-second-name">
+            <input pattern="^[A-Za-z0-9_]{1,32}$" type="text" placeholder="Zweiter Twitter Benutzername">
+        </div>
+        <div class="button" id="submit-button">
+            <i class="material-icons">search</i>
+        </div>
+
+    </div>
+</body>
+</html>
