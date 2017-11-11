@@ -1,24 +1,33 @@
 from flask import Flask, request, jsonify, make_response
 from scipy import spatial
 import subprocess
-import numpy
+import numpy as np
 
 app = Flask(__name__)
 
 def getVecForHandle(handle):
-    #Get tweet string=
-    cmd = ['command', 'argument']
+    #Get tweet string
+    cmd = ["ruby", "twitter-api/tweets.rb", handle]
     prc = subprocess.run(cmd, stdout=subprocess.PIPE, input="")
-    tweetdata = prc.stdout.decode('utf-8')
+    tweetdata = prc.stdout.decode('utf-8')[:1000]
 
+    print("Loading tweets...")
+    #print(tweetdata)
 
-    cmd = ['vectorizer/vectorizer', tweetdata]
+    cmd = ["/bin/bash", "vectorizerWrapper", tweetdata]
     prc = subprocess.run(cmd, stdout=subprocess.PIPE, input="")
-    raw_values = prc.stdout.decode('utf-8')
+    raw_values = prc.stdout.decode('utf-8')[:-1]
+
+    print("Calculating matrix...")
+    #print(raw_values)
 
     #Split by lines to get tweets, then by space to get elements (second dimension)
     #Remove the first element (word) and convert each element of this sublist to ints
-    raw_elements = np.array([int(i) for i in [line.split(" ")[1:] for line in raw_values.split("\n")]])
+    data_lines = raw_values.split("\n")
+    data_matrix = [line.split(" ")[1:-1] for line in data_lines]
+    data_matrix_float = [[float(y) for y in x] for x in data_matrix]
+    print(data_matrix_float)
+    raw_elements = np.array(data_matrix_float)
     data_average = raw_elements.mean(axis=0) # Mean over the first dimension (vertical)
 
     return data_average

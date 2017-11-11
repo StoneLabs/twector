@@ -1,0 +1,1 @@
+echo "$1" | vectorizer/fasttext print-word-vectors vectorizer/wiki.en.bin

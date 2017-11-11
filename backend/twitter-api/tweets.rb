@@ -5,12 +5,12 @@ require "net/http"
 require "json"
 require "oauth"
 require "cgi"
-require "./lib.rb"
+require "#{File.expand_path File.dirname __FILE__}/lib.rb"
 require "yaml"
 
 ARGV[0] || abort("ERROR[#{__FILE__}]: NO HANDLE PROVIDED\nUSAGE: ruby #{__FILE__} <handle>")
 handle = ARGV[0]
-$auth = YAML.load open("#{Dir.pwd}/auth.yaml", &:read)
+$auth = YAML.load open("#{File.expand_path File.dirname __FILE__}/auth.yaml", &:read)
 
 tweets = []
 
