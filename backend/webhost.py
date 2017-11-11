@@ -26,7 +26,7 @@ def getVecForHandle(handle):
     data_lines = raw_values.split("\n")
     data_matrix = [line.split(" ")[1:-1] for line in data_lines]
     data_matrix_float = [[float(y) for y in x] for x in data_matrix]
-    print(data_matrix_float)
+    #print(data_matrix_float)
     raw_elements = np.array(data_matrix_float)
     data_average = raw_elements.mean(axis=0) # Mean over the first dimension (vertical)
 
@@ -42,11 +42,13 @@ def predict():
     vec1 = getVecForHandle(twitter_handle1)
     vec2 = getVecForHandle(twitter_handle2)
 
+    print("Comparing data...")
     cossim = spatial.distance.cosine(vec1, vec2)
 
     #todo: get tweets 1 u. 2
     #todo: calc and avrg vectors
     
+    print("Similarity: " + cossim)
     json_struct = {"math_rate: " : cossim}
 
     r = make_response(jsonify(json_struct)) # Raw output (including error, success and data field)
