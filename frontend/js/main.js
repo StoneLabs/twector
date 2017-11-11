@@ -44,7 +44,6 @@ $(function () {
     }
     function loadIndex(firstName, secondName) {
         // loads the site context
-        console.log('loaded');
         $('#options').addClass('loading');
         $('#data').hide();
     }
@@ -52,7 +51,6 @@ $(function () {
 
 // window load event
 $(window).on('load', function () {
-    console.log('window.load');
     // focus the first input on load
     $('#twector-first-name').focus();
 });
