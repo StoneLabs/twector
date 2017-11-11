@@ -1,21 +1,12 @@
 $(function () {
-    $('#options .input input').on("keyup", function () {
-        validateImput($(this))
+    $('#options .input input').on("keyup", function ( e ) {
+        if(e.which === 13)
+            loadButtonClick();
+        else
+            validateImput($(this))
     });
     $('#submit-button').on('click', function () {
-        var errors = false;
-        // check if error occurs
-        $('#options .input input').each(function () {
-            if (!validateImput($(this))) {
-                errors = true;
-                $(this).closest('.input').addClass('error');
-            }
-        });
-
-        if (errors)
-            return;
-
-        loadIndex($('#twector-first-name'), $('#twector-second-name'));
+        loadButtonClick()
     });
     function validateImput(element) {
         var val = element.val();
@@ -35,7 +26,30 @@ $(function () {
 
         return val.match('^[A-Za-z0-9_]{1,32}$') && val.length > 0;
     }
+    function loadButtonClick() {
+        var errors = false;
+        // check if error occurs
+        $('#options .input input').each(function () {
+            if (!validateImput($(this))) {
+                errors = true;
+                $(this).closest('.input').addClass('error');
+            }
+        });
+
+        if (errors)
+            return;
+
+        loadIndex($('#twector-first-name'), $('#twector-second-name'));
+    }
     function loadIndex(firstName, secondName) {
         // loads the site context
+        console.log('loaded')
     }
+});
+
+// window load event
+$(window).on('load', function () {
+    console.log('window.load');
+    // focus the first input on load
+    $('#twector-first-name').focus();
 });
