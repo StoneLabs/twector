@@ -25,8 +25,7 @@ $(function () {
         else
             element.closest('.input').addClass('error');
 
-        return val.match('^[A-Za-z0-9_]{1,32}$') && val.length > 0 &&
-            $('#twector-first-name').val() !== $('#twector-second-name').val();
+        return val.match('^[A-Za-z0-9_]{1,32}$') && val.length > 0;
     }
     function loadButtonClick() {
         var errors = false;
@@ -47,6 +46,7 @@ $(function () {
         // loads the site context
         console.log('loaded');
         $('#options').addClass('loading');
+        $('#data').hide();
     }
 });
 
