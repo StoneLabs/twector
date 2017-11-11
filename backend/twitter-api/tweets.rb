@@ -1,5 +1,5 @@
 # usage: __file__ <handle>
-# returns: all friendships of <handle> in JSON on STDOUT
+# returns: last 200 tweets of <handle> in JSON on STDOUT
 
 require "net/http"
 require "json"
@@ -11,7 +11,6 @@ handle = ARGV[0]
 $auth = %x(source #{Dir.pwd}/auth.sh; echo $CONSUMER_KEY $CONSUMER_SECRET $API_KEY $API_SECRET).chomp.split
 
 def oauth_get(_url)
-
 	url = URI(_url)
 	http = Net::HTTP.new(url.host, url.port)
 	http.use_ssl = true
@@ -21,17 +20,17 @@ def oauth_get(_url)
 	response = nil ; http.start{response=http.request(request)}
 	raise("HTTP Error #{response.code}") if response.code[0]!='2'
 	return JSON.parse response.body
-
 end
 
-followers = []
-cursor = -1
-begin
-	$stderr.puts("cursor = #{cursor}")
-	page = oauth_get("https://api.twitter.com/1.1/followers/list.json?cursor=#{cursor}&screen_name=#{CGI::escape(handle)}&count=200")
-	followers.concat(page["users"])
-	cursor = page["next_cursor"]
-end while cursor != 0
-$stderr.puts "Followers: #{followers.length}"
+tweets = []
 
-$stdout.puts followers.inspect
+last_id = 0
+
+10.times do
+	res = oauth_get("https://api.twitter.com/1.1/statuses/user_timeline.json?" + {
+		"screen_name" => "fluffyizu",
+		"count" => "2000"
+	}.to_a.map{|i|[CGI::escape(i[0]),CGI::escape(i[1])].join(?=)}.join(?&))
+	tweets += res
+	last_id = res.map{|i|i["id"]}.max
+end
