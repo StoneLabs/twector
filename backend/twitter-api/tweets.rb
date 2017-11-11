@@ -25,4 +25,4 @@ last_id = 0
 	last_id = res.map{|i|i["id"]}.max
 end
 
-$stdout.puts JSON.dump tweets
+$stdout.puts tweets.map{|i|i["text"].split.join(" ")}
