@@ -39,6 +39,8 @@ def predict():
     twitter_handle1 = request.args.get('handle1')
     twitter_handle2 = request.args.get('handle2')
 
+    print("Comparing: " + twitter_handle1 + "<>" + twitter_handle2)
+
     vec1 = getVecForHandle(twitter_handle1)
     vec2 = getVecForHandle(twitter_handle2)
 
