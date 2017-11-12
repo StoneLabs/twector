@@ -40,12 +40,26 @@ $(function () {
         if (errors)
             return;
 
-        loadIndex($('#twector-first-name'), $('#twector-second-name'));
+        loadIndex($('#twector-first-name input').val().substr(1), 
+            $('#twector-second-name input').val().substr(1));
     }
     function loadIndex(firstName, secondName) {
         // loads the site context
         $('#options').addClass('loading');
         $('#data').hide();
+        // get results
+        // ip and port of the backend server
+        var ip = "192.168.21.177:8080"
+        $.get('http://' + ip + '/match?handle1=' + encodeURI(firstName) + 
+        '&handle2=' + encodeURI(secondName), function ( data ) {
+            data = JSON.parse(data);
+            $('#percentage span').html(Math.round(data['math_rate']).toString() + "%");
+        }).fail(function () {
+            console.log('load failed');
+        }).always(function () {
+            $('#options').removeClass('loading');
+            $('#data').show();
+        });
     }
 });
 
