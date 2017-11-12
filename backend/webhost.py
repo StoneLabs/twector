@@ -50,7 +50,7 @@ def predict():
     #todo: get tweets 1 u. 2
     #todo: calc and avrg vectors
     
-    print("Similarity: " + cossim)
+    print("Similarity: " + str(cossim))
     json_struct = {"math_rate: " : cossim}
 
     r = make_response(jsonify(json_struct)) # Raw output (including error, success and data field)
